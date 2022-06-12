@@ -23,6 +23,9 @@ let ItemsController = class ItemsController {
     findAll() {
         return this.itemsService.findAll();
     }
+    findById(id) {
+        return this.itemsService.findById(id);
+    }
     create(id, name, price, description) {
         return this.itemsService.create({
             id,
@@ -37,8 +40,15 @@ __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Array)
 ], ItemsController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Object)
+], ItemsController.prototype, "findById", null);
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)('id')),

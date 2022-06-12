@@ -13,7 +13,10 @@ let ItemsService = class ItemsService {
         this.items = [];
     }
     findAll() {
-        return 'This is ItemsService';
+        return this.items;
+    }
+    findById(id) {
+        return this.items.find((item) => item.id === id);
     }
     create(item) {
         this.items.push(item);

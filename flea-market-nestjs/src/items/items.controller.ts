@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { ItemsService } from './items.service';
 import { Item } from './item.model';
 import { ItemStatus } from './item-status.enum';
@@ -8,9 +8,14 @@ export class ItemsController {
   // DI
   constructor(private readonly itemsService: ItemsService) {}
   @Get()
-  findAll() {
+  findAll(): Item[] {
     // Serviceからビジネスロジックを呼び出し
     return this.itemsService.findAll();
+  }
+
+  @Get(':id') // /items/id というようなpathを想定
+  findById(@Param('id') id: string): Item {
+    return this.itemsService.findById(id);
   }
 
   @Post()
